@@ -1,5 +1,6 @@
 import telebot
 
+# Tenho que colocar em um .env
 CHAVE_API = "6566152384:AAH4BEDjifnavWLPJNkNKAmKamirU6iFf3E"
 
 bot = telebot.TeleBot(CHAVE_API)
@@ -13,7 +14,7 @@ agradecimento = "Agradecemos Pela Preferência!"
 def encerrar(msg):
     bot.reply_to(msg, agradecimento)
 
-# Função para pizza
+# Função para pedir pizza
 @bot.message_handler(commands=["pizza"])
 def pizza(msg):
     if Estoques["Pizza"] < 1:
@@ -24,7 +25,7 @@ def pizza(msg):
 
     Estoques["Pizza"] -= 1
 
-# Função para hamburguer
+# Função para pedir hamburguer
 @bot.message_handler(commands=["hamburguer"])
 def hamburguer(msg):
     if Estoques["Hamburguer"] < 1:
@@ -35,7 +36,7 @@ def hamburguer(msg):
 
     Estoques["Hamburguer"] -= 1
 
-# Função para sobremesa
+# Função para pedir sobremesa
 @bot.message_handler(commands=["sobremesa"])
 def sobremesa(msg):
     if Estoques["Sobremesa"] < 1:
@@ -46,7 +47,7 @@ def sobremesa(msg):
 
     Estoques["Sobremesa"] -= 1
 
-# Função para salada
+# Função para pedir salada
 @bot.message_handler(commands=["salada"])
 def salada(msg):
     if Estoques["Salada"] < 1:
@@ -94,4 +95,5 @@ OBS: Responder qualquer outra mensagem não vai funcionar, clique em uma das op�
 
     bot.reply_to(msg, texto)
 
+# Função para o bot continuar rodando
 bot.polling()
